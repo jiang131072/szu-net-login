@@ -31,7 +31,7 @@ def run(username, password):
     driver = webdriver.Chrome(options)
     driver.get(url)
 
-    if test(url):
+    if test():
         print("已登录")
     else:
         print("尝试登录")
