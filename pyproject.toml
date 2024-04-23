@@ -1,0 +1,22 @@
+[project]
+name = "szu-drcom-login"
+version = "0.2.0"
+description = "SZU Drcom Login Script"
+authors = [
+    {name = "Meson Jiang", email = "jiang131072@gmail.com"},
+]
+dependencies = [
+    "schedule>=1.2.1",
+    "selenium>=4.19.0",
+]
+requires-python = ">3.10.0"
+readme = "README.md"
+license = {text = "MIT"}
+
+
+[tool.pdm]
+distribution = true
+
+
+[project.scripts]
+szu-drcom-login = "core:main"
