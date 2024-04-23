@@ -69,7 +69,7 @@ def main():
     username = args.username
     password = args.password
 
-    run(url, username, password)
+    run(username, password)
     schedule.every(1).minutes.do(run, username, password)
 
     while True:
