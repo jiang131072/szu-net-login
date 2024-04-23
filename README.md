@@ -15,3 +15,7 @@ positional arguments:
   username
   password
 ```
+
+## TODO
+
+[] deal with proxy settins in PATH (maybe unset?)
