@@ -1,6 +1,6 @@
 [project]
 name = "szu-drcom-login"
-version = "0.2.0"
+version = "0.2.1"
 description = "SZU Drcom Login Script"
 authors = [
     {name = "Meson Jiang", email = "jiang131072@gmail.com"},
