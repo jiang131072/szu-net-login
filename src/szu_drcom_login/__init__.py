@@ -1,21 +1,12 @@
 import argparse
 import time
 
+import schedule
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-import schedule
 
 
-def test():
-    options = webdriver.ChromeOptions()
-    options.add_argument("--headless=new")
-    driver = webdriver.Chrome(options)
-    driver.get(url)
-
-    title = driver.title
-
-    driver.close()
-    # get title
+def test(title: str):
     if title in ("注销页", "Logout page"):
         return True
     else:
@@ -24,14 +15,11 @@ def test():
 
 def login(username, password):
     options = webdriver.ChromeOptions()
-
-    # https://www.selenium.dev/blog/2023/headless-is-going-away/
     options.add_argument("--headless=new")
-
     driver = webdriver.Chrome(options)
     driver.get(url)
 
-    if test():
+    if test(driver.title):
         print("已登录")
     else:
         print("尝试登录")
@@ -49,7 +37,7 @@ def login(username, password):
         in_pwd.send_keys(password)
         # box_lgoin.
         btm_login.click()
-        if test():
+        if test(driver.title):
             print("登录成功")
         else:
             print("登录失败，稍后再试")
