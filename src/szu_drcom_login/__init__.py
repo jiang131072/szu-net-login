@@ -27,19 +27,16 @@ def login(username, password):
         print("已登录")
     else:
         print("尝试登录")
-        # 账号 密码 登录按钮
-        in_usn = driver.find_element(By.NAME, "DDDDD")
-        in_pwd = driver.find_element(By.NAME, "upass")
-        btm_login = driver.find_element(By.NAME, "0MKKey")
 
         # 勾选用户协议
-        box_lgoin = driver.find_element(By.NAME, "C1")
-        if not box_lgoin.is_selected():
-            box_lgoin.click()
+        checkbox = driver.find_element(By.NAME, "C1")
+        if not checkbox.is_selected():
+            checkbox.click()
 
-        in_usn.send_keys(username)
-        in_pwd.send_keys(password)
-        btm_login.click()
+        # 账号 密码 登录
+        driver.find_element(By.NAME, "DDDDD").send_keys(username)
+        driver.find_element(By.NAME, "upass").send_keys(password)
+        driver.find_element(By.NAME, "0MKKey").click()
 
         if test(driver.title):
             print("登录成功")
