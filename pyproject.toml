@@ -1,6 +1,6 @@
 [project]
 name = "szu-drcom-login"
-version = "0.5.0"
+version = "0.6.0"
 description = "A helper script to login szu's drcom network."
 authors = [
     {name = "Meson Jiang", email = "jiang131072@gmail.com"},
