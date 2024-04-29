@@ -47,9 +47,11 @@ def login(username, password):
 def main():
     parser = argparse.ArgumentParser()
 
-    parser.add_argument("location", type=str, help="where are you? (dorm/ta)")
-    parser.add_argument("username", type=str)
-    parser.add_argument("password", type=str)
+    parser.add_argument(
+        "location", type=str, help="登录位置（宿舍或教学区），对应dorm/ta"
+    )
+    parser.add_argument("username", type=str, help="账号")
+    parser.add_argument("password", type=str, help="密码")
     args = parser.parse_args()
 
     global url
