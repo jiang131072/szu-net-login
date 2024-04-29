@@ -22,7 +22,7 @@ def test():
         return False
 
 
-def run(username, password):
+def login(username, password):
     options = webdriver.ChromeOptions()
 
     # https://www.selenium.dev/blog/2023/headless-is-going-away/
@@ -35,14 +35,21 @@ def run(username, password):
         print("已登录")
     else:
         print("尝试登录")
+        # 账号 密码 登录按钮
         in_usn = driver.find_element(By.NAME, "DDDDD")
         in_pwd = driver.find_element(By.NAME, "upass")
         btm_login = driver.find_element(By.NAME, "0MKKey")
 
+        # 勾选用户协议
+        box_lgoin = driver.find_element(By.NAME, "C1")
+        if not box_lgoin.is_selected():
+            box_lgoin.click()
+
         in_usn.send_keys(username)
         in_pwd.send_keys(password)
+        # box_lgoin.
         btm_login.click()
-        if test(url):
+        if test():
             print("登录成功")
         else:
             print("登录失败，稍后再试")
@@ -58,19 +65,19 @@ def main():
     args = parser.parse_args()
 
     global url
-    if args.location == "dorm":
-        url = "http://172.30.255.42"
-    elif args.location == "ta":
-        url = "http://drcom.szu.edu.cn"
-    else:
-        print("无效地址。宿舍区：dorm，教学区：ta")
-        exit(1)
+    match args.location:
+        case "dorm":
+            url = "http://172.30.255.42"
+        case "ta":
+            url = "http://drcom.szu.edu.cn"
+        case _:
+            raise ValueError("无效地址。宿舍区：dorm，教学区：ta")
 
     username = args.username
     password = args.password
 
-    run(username, password)
-    schedule.every(1).minutes.do(run, username, password)
+    login(username, password)
+    schedule.every(1).minutes.do(login, username, password)
 
     while True:
         try:
