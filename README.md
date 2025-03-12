@@ -20,8 +20,9 @@ options:
 
 ## 安装
 
-在发布页下载最新whl包，并指定`pip/pipx install <YOUR_WHL_FILE>`安装即可
+在[发布页](https://github.com/jiang131072/szu-net-login/releases/latest)下载最新whl包，并指定`pip/pipx install <YOUR_WHL_FILE>`安装即可
 
 ## 注意事项
 
-需要在正常网络环境下登录一次来下载Webdriver
+1. 需要在正常网络环境下登录一次来下载Webdriver
+2. 否则需要手动安装`chromedriver`：请在[Chrome for Testing 发布页](https://googlechromelabs.github.io/chrome-for-testing/#stable)。手动下载对应操作系统和架构的`chromedriver`二进制文件并安装，再将其添加到PATH。
