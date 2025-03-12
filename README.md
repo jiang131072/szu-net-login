@@ -1,32 +1,27 @@
-# szu-drcom-login
+# szu-net-login
 
-一个使用Webdriver接口运行无头浏览器绘画完成校园网登录的脚本
+深圳大学教学区网络登录脚本
 
 ## 使用
 
 ```bash
-usage: szu-drcom-login [-h] location username password
+usage: szu-net-login [-h] [--interval INTERVAL] [--username USERNAME] [--password PASSWORD]
 
-positional arguments:
-  location    登录位置（宿舍或教学区），对应dorm/ta
-  username    账号
-  password    密码
+深圳大学校园网自动登录工具（教学区）
 
 options:
-  -h, --help  show this help message and exit
+  -h, --help           show this help message and exit
+  --interval INTERVAL  间隔时间
+  --username USERNAME  账号。环境变量：SZU_NET_USERNAME
+  --password PASSWORD  密码。环境变量：SZU_NET_PASSWORD
+
+注：必须在已联网情况下执行一次，下载WebDriver执行无头登录操作
 ```
 
 ## 安装
 
-在发布界面下载最新的wheel包文件，然后执行`pipx install <whl file>`即可（注意，需要首先安装pipx）。也可使用`pip install <whl file>`直接安装到环境中。
+在发布页下载最新whl包，并指定`pip/pipx install <YOUR_WHL_FILE>`安装即可
 
 ## 注意事项
 
-1. 无网络状态下尝试登录会短暂卡住，并输出一些和googlelabs等相关的连接失败警告。
-  - 这是因为Selenium的Webdriver并不是直接打包在wheel文件中，而需要在运行时下载更新。
-  - 在没有登录网络的情况下自然会连接失败。
-  - 为了保证功能正常，建议安装好之后先测试一次，以便检查账号登录情况并缓存Webdriver可执行文件。
-2. 代理
-  - 宿舍区由于是内网IP直连，使用任何形式的代理都没有影响。
-  - 教学区的登录情况没有经过充分测试。建议关闭代理的DoH并建议将登录网址置入绕过白名单。
-3. 密码：注意特殊字符，如`$`，需要标注转义。
+需要在正常网络环境下登录一次来下载Webdriver
